@@ -17,10 +17,10 @@ class ChatScreen extends StatelessWidget {
             padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
               backgroundImage: NetworkImage(
-                  'https://i0.wp.com/dsguruji.com/wp-content/uploads/2023/02/gigi-hadid-figur-aussehen-hintern-model.jpg?w=1200&ssl=1'),
+                  'https://img.freepik.com/vector-gratis/mujer-adivina-caracter-cartas_603843-1331.jpg?w=826&t=st=1690966796~exp=1690967396~hmac=213e855dbfb70daa8d80e0224f5b5857210acc38e4078c9d59f955cdc670d7d8'),
             ),
           ),
-          title: const Text('Mi amor <3'),
+          title: const Text('Tu adivina del dia'),
           centerTitle: true,
         ),
         body: _ChatView());
