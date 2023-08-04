@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/checkbox_widget.dart';
+import '../widgets/select_widget.dart';
 
 class SelectorsScreen extends StatelessWidget {
   const SelectorsScreen({Key? key}) : super(key: key);
@@ -16,7 +17,14 @@ class SelectorsScreen extends StatelessWidget {
         title: const Text('Selectors'),
         centerTitle: true,
       ),
-      body: _SelectorsView(),
+      body: const Column(children: [
+        Expanded(
+          // child: _SelectorsView(),
+          child: SelectOpciones(),
+        ),
+        // const SizedBox(height: 20),
+        // const SelectOpciones()
+      ]),
     );
   }
 }
