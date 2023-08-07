@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/infrastructure/models/local_video_model.dart';
-import 'package:flutter_application_1/shared/data/local_video_post.dart';
+import 'package:flutter_application_1/domain/repositories/video_posts_repository.dart';
 import '../../domain/enteties/video_post.dart';
 
 class DicoverProvider extends ChangeNotifier {
+  final VideoPostRepository videosRepository;
+
   bool inicialLoading = true;
 
   List<VideoPost> videos = [];
 
-  Future<void> loadNextPAge() async {
-    // await Future.delayed(const Duration(seconds: 2));
+  DicoverProvider({required this.videosRepository});
 
-    final List<VideoPost> newVideos = videoPosts
-        .map((video) => LocalVideoModel.fromJson(video).toVideoEntity())
-        .toList();
+  Future<void> loadNextPAge() async {
+    final newVideos = await videosRepository.getTrendingVideosbyPage(1);
 
     videos.addAll(newVideos);
     inicialLoading = false;
-
     notifyListeners();
   }
 }
