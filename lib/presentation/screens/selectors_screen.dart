@@ -17,13 +17,10 @@ class SelectorsScreen extends StatelessWidget {
         title: const Text('Selectors'),
         centerTitle: true,
       ),
-      body: const Column(children: [
-        Expanded(
-          // child: _SelectorsView(),
-          child: SelectOpciones(),
-        ),
-        // const SizedBox(height: 20),
-        // const SelectOpciones()
+      body: Column(children: [
+        _SelectorsView(),
+        const SizedBox(height: 20),
+        const SelectOpciones(),
       ]),
     );
   }
@@ -43,27 +40,40 @@ class _SelectorsViewState extends State<_SelectorsView> {
     {'label': 'Checkbox 5', 'value': true},
   ];
 
+  get children => null;
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: checkboxList.length,
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          title: Text(checkboxList[index]['label'],
-              style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20,
-                  color: Colors.blue[900])),
-          leading: CheckboxWidget(
-            isChecked: checkboxList[index]['value'],
-            onChanged: (bool newValue) {
-              setState(() {
-                checkboxList[index]['value'] = newValue;
-              });
-            },
+    return Column(
+      children: [
+        const SizedBox(height: 20),
+        const Text(
+          'Selectors with "checkboxes',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
-        );
-      },
+        ),
+        Column(
+          children: checkboxList.map((item) {
+            return ListTile(
+              title: Text(item['label'],
+                  style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15,
+                  )),
+              leading: CheckboxWidget(
+                isChecked: item['value'],
+                onChanged: (bool newValue) {
+                  setState(() {
+                    item['value'] = newValue;
+                  });
+                },
+              ),
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }

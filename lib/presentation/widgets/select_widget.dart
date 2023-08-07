@@ -12,7 +12,9 @@ class SelectOpcionesState extends State<SelectOpciones> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
+    return Column(children: [
+      const Text('Selectors with "radio"',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
       RadioListTile(
         title: const Text('Opción 1'),
         value: 1,
